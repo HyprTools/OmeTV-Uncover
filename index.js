@@ -200,3 +200,5 @@ async function getLocation(ip) {
 
 
 console.log("%cOmeTV Uncover", "color:#555; font-size:15px;");
+console.log("Edited by HyprTools");
+console.log("https://github.com/HyprTools");
