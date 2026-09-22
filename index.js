@@ -1,3 +1,5 @@
+let apiKey = "";
+
 const panel = document.createElement('div');
 panel.style.cssText = `
     position: fixed; 
@@ -12,8 +14,9 @@ panel.style.cssText = `
     z-index: 99999;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14.5px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255,255,255,0.08) inset;
-    user-select: text;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(255,255,255,0.08) inset;
+    user-select: none; 
     cursor: move; 
     overflow: hidden;
     min-height: 280px;
@@ -75,8 +78,6 @@ header.addEventListener('mousedown', e => {
     isDragging = true;
     offsetX = e.clientX - panel.offsetLeft;
     offsetY = e.clientY - panel.offsetTop;
-
-    panel.style.userSelect = "none";
 });
 
 document.addEventListener('mousemove', e => {
@@ -86,10 +87,7 @@ document.addEventListener('mousemove', e => {
     panel.style.right = "auto";
 });
 
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-    panel.style.userSelect = "text";
-});
+document.addEventListener('mouseup', () => { isDragging = false; });
 
 window.oRTCPeerConnection = window.oRTCPeerConnection || window.RTCPeerConnection;
 window.RTCPeerConnection = function(...args) {
@@ -160,25 +158,22 @@ async function getLocation(ip) {
     infoDiv.innerHTML = `<span style="color:#666;">Fetching data...</span>`;
     
     try {
-        const res = await fetch(`http://ip-api.com/json/${ip}`);
+        const res = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ip}`);
         const data = await res.json();
 
         const html = `
             <strong>IP:</strong> <b>${ip}</b><br>            
-            Country: ${data.country || 'N/A'}<br>
-            Region: ${data.regionName || 'N/A'}<br>
-            District: ${data.district || 'N/A'}<br>
+            Country: ${data.country_name || 'N/A'}<br>
+            Region: ${data.state_prov || 'N/A'}<br>
             City: <b>${data.city || 'N/A'}</b><br>
             ISP: ${data.isp || 'N/A'}<br>
-            Coords: ${data.lat}, ${data.lon}<br><br>
+            <strong>Language:</strong> <b>${data.languages || 'Unknown'}</b><br>
+            Coords: ${data.latitude}, ${data.longitude}<br><br>
             
             <strong>TIMEZONE</strong><br>
-            Zone: ${data.timezone || 'N/A'}<br>
-
-            <strong>OTHER</strong><br>
-            Mobile: ${data.mobile || 'N/A'}<br>
-            Proxy: ${data.proxy || 'N/A'}<br>
-            Hosting: ${data.hosting || 'N/A'}<br>
+            Zone: ${data.time_zone?.name || 'N/A'}<br>
+            Current Time: ${data.time_zone?.current_time || 'N/A'}<br>
+            Offset: UTC${data.time_zone?.offset || ''}<br><br>
             
             <span style="color:#555; font-size:12.5px;">Updated just now</span>
         `;
@@ -200,5 +195,3 @@ async function getLocation(ip) {
 
 
 console.log("%cOmeTV Uncover", "color:#555; font-size:15px;");
-console.log("%cEdited by HyprTools", "color:#555;", "font-size:10px;");
-console.log("https://github.com/HyprTools");
