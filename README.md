@@ -23,40 +23,11 @@ OmeTV Uncover is a JavaScript userscript that detects the remote peer's public I
 ## Requirements
 
 * A modern Chromium-based browser
-* An IPGeolocation API key
 * An OmeTV account
 
 ---
 
-## Setup Guide
-
-### 1. Create an IPGeolocation account
-
-Visit **https://ipgeolocation.io/** and create a free account.
-
-### 2. Copy your API key
-
-After signing in, open your dashboard and copy your API key.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/87fa9f6e-3ac6-4721-b5bb-2ccbd2240d0a" alt="IPGeolocation API Key" width="900">
-</p>
-
-### 3. Configure the script
-
-Replace:
-
-```text
-let apiKey = "";
-```
-
-with:
-
-```text
-let apiKey = "YOUR_API_KEY";
-```
-
-### 4. Open OmeTV
+### 1. Open OmeTV
 
 Go to **https://ome.tv/** and sign in.
 
@@ -80,11 +51,11 @@ allow pasting
 
 and press **Enter**.
 
-### 7. Run the script
+### 2. Run the script
 
 Paste the entire script into the Console and press **Enter**.
 
-### 8. Start using OmeTV Uncover
+### 3. Start using OmeTV Uncover
 
 Once connected to another user, the floating panel will automatically display the available information.
 
@@ -97,18 +68,25 @@ Once connected to another user, the floating panel will automatically display th
 * Region / State
 * City
 * ISP
-* Languages
 * Latitude & Longitude
 * Timezone
 * Current local time
-* UTC Offset
+* VPN / Proxy
 * Remote video snapshot
 
 ---
 
+## What's different?
+
+This script uses a different API from IP-API, so you don't have to register. You can still access information such as the user's city, state/province, timezone, and internet provider.
+
+From this script, you can check if the user is using a VPN or not.
+
+### This repository is forked from whenx
+
 ## How It Works
 
-The script monitors the WebRTC connection used by OmeTV to detect the remote peer's public IP address. It then queries the IPGeolocation API to retrieve approximate geolocation data and displays it in a floating interface.
+The script monitors the WebRTC connection used by OmeTV to detect the remote peer's public IP address. It then queries the IP-API to retrieve approximate geolocation data and displays it in a floating interface.
 
 When the remote video stream becomes available, the script automatically captures a square snapshot and displays it inside the panel.
 
