@@ -31,11 +31,21 @@ OmeTV Uncover is a JavaScript userscript that detects the remote peer's public I
 
 Go to **https://ome.tv/** and sign in.
 
-### 5. Open Developer Tools
+---
+
+### 2. Open IP Geolocation
+
+Go to **https://ipgeolocation.io/** and sign in.
+
+### 3. Copy your API key
+
+Go to your dashboard and copy your key.
+
+### 4. Open Developer Tools
 
 Press **F12** or **Ctrl + Shift + I**.
 
-### 6. Open the Console
+### 5. Open the Console
 
 Select the **Console** tab.
 
@@ -51,11 +61,13 @@ allow pasting
 
 and press **Enter**.
 
-### 2. Run the script
+---
+
+### 6. Run the script
 
 Paste the entire script into the Console and press **Enter**.
 
-### 3. Start using OmeTV Uncover
+### 7. Start using OmeTV Uncover
 
 Once connected to another user, the floating panel will automatically display the available information.
 
