@@ -67,7 +67,11 @@ and press **Enter**.
 
 Paste the entire script into the Console and press **Enter**.
 
-### 7. Start using OmeTV Uncover
+### 7. Paste your API key
+
+The script will prompt for the key, all you gotta do is paste it and confirm.
+
+### 8. Start using OmeTV Uncover
 
 Once connected to another user, the floating panel will automatically display the available information.
 
