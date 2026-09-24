@@ -78,9 +78,8 @@ Once connected to another user, the floating panel will automatically display th
 
 ## What's different?
 
-This script uses a different API from IP-API, so you don't have to register. You can still access information such as the user's city, state/province, timezone, and internet provider.
-
-From this script, you can check if the user is using a VPN or not.
+Instead of defining the `apiKey` variable with your key. It will prompt you for it and the key will be saved in a local storage.
+You can also copy the info from your panel.
 
 ### This repository is forked from whenx
 
