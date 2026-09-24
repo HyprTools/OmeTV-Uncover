@@ -1,24 +1,18 @@
-try {
-    const itemKey = "ipgeolocation-api-key"
+const itemKey = "ipgeolocation-api-key";
+const apiKey = localStorage.getItem(itemKey).trim();
 
-    let apiKey = localStorage.getItem(itemKey);
-    if (!apiKey) {
-        apiKey = prompt("Paste your API key! (X to cancel)").trim();
-        if (apiKey.toLowerCase() === "x") {
-            console.log("%cScript canceled.", "color:#f00");
-            return
-        }
-        if (apiKey === "") {
-            alert("An API key is required. If you're confused, there's instructions provided to access a key. Re-run this script when you're ready.");
-            return;
-        }
-        
-        localStorage.setItem(itemKey, apiKey);
+if (!apiKey) {
+    const input = prompt("Paste your API key! (X to cancel)")?.trim();
+    if (!input || input.toLowerCase() === "x") {
+        console.log("%cScript canceled.", "color:#f00");
+        return;
     }
-} catch (err) {
-    console.log("%cThe script failed to fetch the api key.", "color:#f00");
-    console.error(err);
-    return;
+    if (input === "") {
+        alert("An API key is required. If you're confused, there's instructions provided to access a key. Re-run this script when you're ready.");
+        return;
+    }
+
+    localStorage.setItem(itemKey, input);
 }
 
 const panel = document.createElement('div');
