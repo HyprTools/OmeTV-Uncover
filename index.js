@@ -1,6 +1,6 @@
 (() => {
     const itemKey = "ipgeolocation-api-key";
-    const apiKey = localStorage.getItem(itemKey).trim();
+    const apiKey = localStorage.getItem(itemKey);
     
     if (!apiKey) {
         const input = prompt("Paste your API key! (X to cancel)")?.trim();
