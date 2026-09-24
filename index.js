@@ -1,4 +1,13 @@
-let apiKey = prompt("Paste your API key");
+const itemKey = "ipgeolocation-api-key"
+
+let apiKey = localStorage.getItem(itemKey) || prompt("Paste your API key! (X to cancel)");
+if (apiKey.toLowerCase() === "x") {
+    console.log("%cScript canceled.", "color:#f00")
+    return
+} else if (apiKey.trim() === "") {
+    alert("An API key is required. If you're confused, there's instructions provided to access a key. Re-run this script when you're ready.")
+    return
+}
 
 const panel = document.createElement('div');
 panel.style.cssText = `
@@ -200,5 +209,5 @@ async function getLocation(ip) {
 
 
 console.log("%cOmeTV Uncover", "color:#555; font-size:15px;");
-console.log("Edited by HyprTools");
+console.log("%cEdited by HyprTools", "color:#fff");
 console.log("https://github.com/HyprTools");
