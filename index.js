@@ -1,12 +1,22 @@
-const itemKey = "ipgeolocation-api-key"
+try {
+    const itemKey = "ipgeolocation-api-key"
 
-let apiKey = localStorage.getItem(itemKey) || prompt("Paste your API key! (X to cancel)");
-if (apiKey.toLowerCase() === "x") {
-    console.log("%cScript canceled.", "color:#f00")
-    return
-} else if (apiKey.trim() === "") {
-    alert("An API key is required. If you're confused, there's instructions provided to access a key. Re-run this script when you're ready.")
-    return
+    let apiKey = localStorage.getItem(itemKey) || prompt("Paste your API key! (X to cancel)");
+    if (apiKey.toLowerCase() === "x") {
+        console.log("%cScript canceled.", "color:#f00");
+        return
+    } else if (apiKey.trim() === "") {
+        alert("An API key is required. If you're confused, there's instructions provided to access a key. Re-run this script when you're ready.");
+        return;
+    }
+    
+    if (!localStorage.getItem(itemKey)) {
+        localStorage.setItem(itemKey, apiKey);
+    }
+} catch (err) {
+    console.log("%cThe script failed to fetch the api key.", "color:#f00");
+    console.error(err);
+    return;
 }
 
 const panel = document.createElement('div');
